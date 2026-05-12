@@ -13,7 +13,7 @@ class Transaction extends Model
         'description',
         'category_id',
         'date',
-        'status', // tambah ini
+        'status', 
     ];
 
     public function category()
