@@ -107,6 +107,10 @@ Route::middleware('auth')->group(function () {
         // GET /admin/pengeluaran → tampilkan semua data pengeluaran
         Route::get('/pengeluaran', [AdminTransactionController::class, 'pengeluaran']);
 
+        // Route activity log Admin
+// GET /admin/activity-log → tampilkan semua log aktivitas
+Route::get('/activity-log', [AdminController::class, 'activityLog']);
+
     });
 
 });

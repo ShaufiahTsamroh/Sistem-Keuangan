@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\Category;
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,10 +62,16 @@ class TransactionController extends Controller
             'category_id' => $request->category_id,
             'date'        => $request->date,
             'description' => $request->description,
-            'status'      => 'pending', // menunggu persetujuan Admin
+            'status'      => 'pending',
         ]);
 
-        return redirect('/bendahara/pengeluaran')->with('success', 'Pengajuan pengeluaran berhasil dikirim, menunggu persetujuan Admin');
+        // Catat aktivitas pengajuan pengeluaran
+        ActivityLog::create([
+            'user_id'  => Auth::id(),
+            'activity' => 'Bendahara mengajukan pengeluaran senilai Rp ' . number_format($request->amount, 0, ',', '.') . ' — menunggu persetujuan Admin',
+        ]);
+
+        return redirect('/bendahara/pengeluaran')->with('success', 'Pengajuan berhasil dikirim, menunggu persetujuan Admin');
     }
 
     // Menampilkan daftar kategori untuk Bendahara (hanya baca)
