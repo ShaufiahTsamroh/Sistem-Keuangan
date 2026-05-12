@@ -13,19 +13,19 @@ class AuthenticatedSessionController extends Controller
 {
     public function create(): View|RedirectResponse
 {
-    if (Auth::check()) {
-        $user = Auth::user();
+    if (Auth::check()) { //utk cek sudh pernh login atau tdk
+        $user = Auth::user(); //Ambil data user yang sedang login sekarang (nama, email, role_id, dll).
         
-        if ($user->role_id == 1) {
-            return redirect('/admin/dashboard');
-        } elseif ($user->role_id == 2) {
+        if ($user->role_id == 1) { //Cek role_id-nya. Kalau 1 = Admin, langsung arahkan ke dashboard admin.
+            return redirect('/admin/dashboard'); // utk pindahkan browser ke halaman /admin/dashboard
+        } elseif ($user->role_id == 2) { // kalo rolenya = 2 brrti dia bendahara, arahin ke dashboard bndahra
             return redirect('/bendahara/dashboard');
         } else {
-            return redirect('/anggota/dashboard');
+            return redirect('/anggota/dashboard');//selain role 1,2 brrti dia anggota
         }
     }
 
-    return view('auth.login');
+    return view('auth.login'); //klo user blm login,tmpilin hlman login
 }
 
     public function store(LoginRequest $request): RedirectResponse
@@ -34,10 +34,10 @@ class AuthenticatedSessionController extends Controller
 
     $request->session()->regenerate();
 
-    $user = Auth::user();
+    $user = Auth::user(); //ambil data user yang baru saja berhasil login.
 
     if ($user->role_id == 1) {
-        return redirect('/admin/dashboard'); // ubah dari /admin ke /admin/dashboard
+        return redirect('/admin/dashboard'); // ke admin/dashboard
     } elseif ($user->role_id == 2) {
         return redirect('/bendahara/dashboard');
     } else {
@@ -47,7 +47,7 @@ class AuthenticatedSessionController extends Controller
 
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        Auth::guard('web')->logout(); //Perintah logout — hapus data sesi login user dari sistem. 'web' adalah nama guard default Laravel.
 
         $request->session()->invalidate();
 

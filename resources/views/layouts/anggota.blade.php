@@ -3,39 +3,38 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin - OrgFinance</title>
+    <title>Anggota - OrgFinance</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-100 antialiased">
+
+{{-- Navbar bawaan Laravel Breeze --}}
 @include('layouts.navigation')
+
 <div class="flex">
 
-    {{-- SIDEBAR ADMIN --}}
+    {{-- SIDEBAR ANGGOTA --}}
     <div class="w-64 min-h-screen bg-[#7B2C2C] text-white p-5 flex flex-col justify-between">
 
         <div>
             {{-- Nama dan badge role --}}
             <div class="mb-6">
                 <h3 class="text-lg font-semibold">{{ Auth::user()->name }}</h3>
-                {{-- Badge khusus Admin --}}
-                <span class="text-xs bg-red-700 px-2 py-1 rounded-full">
-                    Admin
+                {{-- Badge khusus Anggota --}}
+                <span class="text-xs bg-red-900 px-2 py-1 rounded-full">
+                    Anggota
                 </span>
             </div>
 
             <hr class="mb-6 border-gray-400">
 
-            {{-- Menu Admin --}}
+            {{-- Menu Anggota — hanya bisa lihat data --}}
             <ul class="space-y-3">
-                <li><a href="/admin/dashboard" class="block hover:bg-white/20 p-2 rounded">Dashboard</a></li>
-                <li><a href="/admin/transaksi" class="block hover:bg-white/20 p-2 rounded">Transaksi</a></li>
-                <li><a href="/admin/pemasukan" class="block hover:bg-white/20 p-2 rounded">Pemasukan</a></li>
-                <li><a href="/admin/pengeluaran" class="block hover:bg-white/20 p-2 rounded">Pengeluaran</a></li>
-                <li><a href="/admin/kategori" class="block hover:bg-white/20 p-2 rounded">Kategori</a></li>
-                <li><a href="/admin/users" class="block hover:bg-white/20 p-2 rounded">Manajemen User</a></li>
-                <li><a href="/admin/activity-log" class="block hover:bg-white/20 p-2 rounded">Activity Log</a></li>
-                
+                <li><a href="/anggota/dashboard" class="block hover:bg-white/20 p-2 rounded">Dashboard</a></li>
+                <li><a href="/anggota/transaksi" class="block hover:bg-white/20 p-2 rounded">Transaksi</a></li>
+                <li><a href="/anggota/pemasukan" class="block hover:bg-white/20 p-2 rounded">Pemasukan</a></li>
+                <li><a href="/anggota/pengeluaran" class="block hover:bg-white/20 p-2 rounded">Pengeluaran</a></li>
             </ul>
         </div>
 

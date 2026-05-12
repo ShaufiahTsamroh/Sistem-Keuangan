@@ -1,4 +1,7 @@
-@extends(Auth::user()->role_id == 1 ? 'layouts.admin' : 'layouts.app')
+@extends(
+    Auth::user()->role_id == 1 ? 'layouts.admin' :
+    (Auth::user()->role_id == 2 ? 'layouts.app' : 'layouts.anggota')
+)
 
 @section('content')
 
