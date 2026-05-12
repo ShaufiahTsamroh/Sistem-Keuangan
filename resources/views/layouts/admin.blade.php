@@ -34,7 +34,6 @@
                 <li><a href="/admin/pengeluaran" class="block hover:bg-white/20 p-2 rounded">Pengeluaran</a></li>
                 <li><a href="/admin/kategori" class="block hover:bg-white/20 p-2 rounded">Kategori</a></li>
                 <li><a href="/admin/users" class="block hover:bg-white/20 p-2 rounded">Manajemen User</a></li>
-                <li><a href="/admin/laporan" class="block hover:bg-white/20 p-2 rounded">Laporan</a></li>
                 <li><a href="/admin/activity-log" class="block hover:bg-white/20 p-2 rounded">Activity Log</a></li>
             </ul>
         </div>
